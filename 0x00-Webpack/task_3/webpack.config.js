@@ -3,22 +3,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: {
-    header: './js/header.js',
-    body: './js/body.js',
-    footer: './js/footer.js'
+    header: './modules/header/header.js',
+    body: './modules/body/body.js',
+    footer: './modules/footer/footer.js',
   },
   output: {
-    path: path.resolve(__dirname, 'public'),
     filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'public'),
+    clean: true,
   },
-  mode: 'development',
   devServer: {
-    static: {
-      directory: path.resolve(__dirname, 'public'),
-    },
+    static: path.resolve(__dirname, 'public'),
     port: 8564,
-    open: true,  // Automatically open the browser
+    open: true,
+    hot: true,
   },
   module: {
     rules: [
@@ -28,51 +28,23 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]',
-              outputPath: 'assets/',
+              name: '[path][name].[ext]',
             },
           },
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-                quality: 65
-              },
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              webp: {
-                quality: 75
-              }
-            }
-          }
-        ]
-      }
+        ],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
+      title: 'Webpack Setup',
+      template: './public/index.html', // Adjust this path to match your directory structure
     }),
     new CleanWebpackPlugin(),
   ],
-  devtool: 'inline-source-map',  // Enables inline source mapping
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
+  devtool: 'inline-source-map',
 };
