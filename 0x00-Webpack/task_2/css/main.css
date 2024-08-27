@@ -1,12 +1,16 @@
-#count {
-    display: inline-block;
-    margin-left: 20px;
-    font-weight: bold;
-}
+/* main.css */
 
-#logo {
+/* Style for the click count text */
+#count {
+    font-weight: bold; /* Makes the click count bold */
+  }
+  
+  /* Style for the logo */
+  #logo {
     width: 200px;
     height: 200px;
-    background-image: url('../assets/holberton-logo.jpg');
-    background-size: cover;
-}
+    background-image: url('../assets/holberton-logo.jpg'); /* Adjust the path if necessary */
+    background-size: cover; /* Ensures the image covers the element */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+  }
+  
