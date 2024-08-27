@@ -18,6 +18,13 @@ module.exports = {
         type: 'asset/resource',
         use: [
           {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/',
+            },
+          },
+          {
             loader: 'image-webpack-loader',
             options: {
               mozjpeg: {
@@ -44,8 +51,8 @@ module.exports = {
     ],
   },
   performance: {
-    hints: 'warning', // Can be set to 'error' or false to disable
-    maxAssetSize: 244 * 1024, // 244 KiB limit
-    maxEntrypointSize: 244 * 1024, // 244 KiB limit
+    hints: 'warning',
+    maxAssetSize: 244 * 1024,
+    maxEntrypointSize: 244 * 1024,
   }
 };
