@@ -3,48 +3,29 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
-  entry: {
-    header: './modules/header/header.js',
-    body: './modules/body/body.js',
-    footer: './modules/footer/footer.js',
-  },
+  entry: './src/index.js',
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'public'),
-    clean: true,
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
-  devServer: {
-    static: path.resolve(__dirname, 'public'),
-    port: 8564,
-    open: true,
-    hot: true,
-  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'public', 'index.html'),
+    }),
+  ],
   module: {
     rules: [
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]',
-            },
-          },
-        ],
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Webpack Setup',
-      template: './public/index.html', // Adjust this path to match your directory structure
-    }),
-    new CleanWebpackPlugin(),
-  ],
-  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+    compress: true,
+    port: 9000,
+    open: true,
+  },
 };

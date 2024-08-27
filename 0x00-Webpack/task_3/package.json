@@ -4,7 +4,8 @@
   "description": "Webpack task 3 setup",
   "main": "index.js",
   "scripts": {
-    "start-dev": "webpack serve --open"
+    "start-dev": "webpack-dev-server --open",
+    "build": "webpack"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
