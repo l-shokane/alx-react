@@ -9,8 +9,8 @@
   #logo {
     width: 200px;
     height: 200px;
-    background-image: url('../assets/holberton-logo.jpg'); /* Adjust the path if necessary */
-    background-size: cover; /* Ensures the image covers the element */
+    background: url('../assets/holberton-logo.jpg'); /* Correct background property */
+    background-size: 200px 200px; /* Specifies the size of the background image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
   }
   
