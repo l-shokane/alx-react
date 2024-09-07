@@ -1,0 +1,52 @@
+/* src/App.css */
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.App-header {
+  background-color: white;
+  border-bottom: 3px solid #e0354b;
+  color: #e0354b;
+  padding: 20px;
+}
+
+.App-header h1 {
+  font-size: 3rem;
+}
+
+.App-body {
+  margin: 50px 0;
+}
+
+.App-body p {
+  font-size: 1.25rem;
+}
+
+.App-body label {
+  margin-right: 10px;
+}
+
+.App-body input {
+  margin: 0 10px;
+}
+
+button {
+  margin-left: 10px;
+}
+
+.App-footer {
+  border-top: 3px solid #e0354b;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: gray;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
